@@ -33,13 +33,21 @@
 					</div>
 					<div class="content">
 						<header>
-							<h2>Assembling Geospatial Data for Interactive Map of IIC Organizations</h2>
+							<h2>Assembling Geospatial Data for Interactive Map of Organizations</h2>
 						</header>
 						<p>Coordinating the work of a coalition is difficult on a local level. The problem is further compounded for statewide and national coordination. The need for clear, concise visualization of organizations committed to the cause of IIC was presented by a member organization.</p>
 						<pre>
   <code>
-    p { color: red; }
-    body { background-color: #eee; }
+m <- leaflet(IIC) %>%
+addTiles()  %>%
+  setView( lat=-27, lng=170 , zoom=4) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(~long, ~lat,
+    fillColor = ~mypalette(mag), fillOpacity = 0.7, color="white", radius=8, stroke=FALSE,
+    label = mytext,
+    labelOptions = labelOptions( style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "13px", direction = "auto")
+  ) %>%
+  addLegend( pal=mypalette, values=~mag, opacity=0.9, title = "Magnitude", position = "bottomright" )
   </code>
 </pre>
 						<p>By compiling publically available data on member organization HQs, a map was constructed of the dozens of organizations working with the IIC. Interactive map shown below.</p>
