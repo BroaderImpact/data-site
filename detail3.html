@@ -35,25 +35,7 @@
 						<header>
 							<h2>GSL in Disease</h2>
 						</header>
-						<p>The goal of identifying the differential expression in silico often
-							becomes a proverbial "fishing expedition". To inject precision into the label-free mass spectrometric analysis of lipids, the following pipeline was developed. <br />
-							First, .raw files from the liquid chromatography-mass spectrometry (LCMS) were converted into mzML files using BLANK. A first pass of these files was performed with SIMLipid BLANK, a proprietary software that relies upon the LipidMAPS database. Files were then converted to .csv for data cleaning and batch analysis. The homogeneous distribution of matrix-cluster signals were identified for each of the matrices employed, followed by the identification of homogeneous distribution of endogenous molecular signals in positive and negative ion mode. The inclusion of both external (ESTD) and internal (ISTD) standards allows for confirmation of lipid abundance using normalization algorithms BLANK. Subsequently, principal component analysis (PCA) was performed in Python.</p>
-							<pre>
-							<code>
-							m <- leaflet(IIC) %>%
-							addTiles()  %>%
-							setView( lat=-27, lng=170 , zoom=4) %>%
-							addProviderTiles("Esri.WorldImagery") %>%
-							addCircleMarkers(~long, ~lat,
-							fillColor = ~mypalette(mag), fillOpacity = 0.7, color="white", radius=8, stroke=FALSE,
-							label = mytext,
-							labelOptions = labelOptions( style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "13px", direction = "auto")
-							) %>%
-							addLegend( pal=mypalette, values=~mag, opacity=0.9, title = "Magnitude", position = "bottomright" )
-							</code>
-							</pre>
-							<p>Briefly, following attribution of signals to LipidMAPS identities, means and deviations thereof were calculated with relative abundance values. Covariant matrices were constructed, with several iterations of eigenvector calculations and values of covariance for each. Finally, data z-scores were projected onto new basis. Resulting graph shown.
-							.</p>
+						<p>Sciscitator nascitur non fit.</p>
 
 						<p>By compiling publically available data on member organization HQs, a map was constructed of the dozens of organizations working with the IIC. Interactive map shown below.</p>
 					</div>
