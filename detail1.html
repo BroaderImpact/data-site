@@ -37,20 +37,30 @@
 						</header>
 						<p>Coordinating the work of a coalition is difficult on a local level. The problem is further compounded for statewide and national coordination. The need for clear, concise visualization of organizations committed to the cause of IIC was presented by a member organization.</p>
 						<pre>
-  <!-- <code>
-m <- leaflet(IIC) %>%
-addTiles()  %>%
-  setView( lat=-27, lng=170 , zoom=4) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addCircleMarkers(~long, ~lat,
-    fillColor = ~mypalette(mag), fillOpacity = 0.7, color="white", radius=8, stroke=FALSE,
-    label = mytext,
-    labelOptions = labelOptions( style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "13px", direction = "auto")
-  ) %>%
-  addLegend( pal=mypalette, values=~mag, opacity=0.9, title = "Magnitude", position = "bottomright" )
-  </code> -->
+  <code style="display: inline-block; white-space:break-spaces; max-width:100%;"">
+import folium
+
+# Create a map object
+map = folium.Map(location=[37.0902, -95.7129], zoom_start=4)
+
+# List of Interfaith Immigration Coalition organizations and their locations
+orgs = ["Interfaith Action of Central Texas", "Interfaith Works of Central New York", "Interfaith Worker Justice", "Interfaith Ministries for Greater Houston"]
+cities = ["Austin, TX", "Syracuse, NY", "Chicago, IL", "Houston, TX"]
+
+# Loop through the organizations and their cities
+for org, city in zip(orgs, cities):
+    # Get the latitude and longitude of the city using geocoding
+    location = folium.Map(location=city).location
+    # Create a marker for the location
+    marker = folium.Marker(location=location, popup=org)
+    # Add the marker to the map
+    marker.add_to(map)
+
+# Display the map
+map
+  </code>
 </pre>
-						<p>By compiling publically available data on member organization HQs, a map was constructed of the dozens of organizations working with the IIC. Interactive map shown below.</p>
+						<p>By compiling publically available data on member organization HQs, a map was constructed of the dozens of organizations working with the IIC. Interactive map linked <a href="https://www.interfaithimmigration.org/about/member-organizations/">here</a>.</p>
 					</div>
 				</div>
 				<a href="detail12.html" class="nav previous"><span class="fa fa-chevron-left"></span></a>
