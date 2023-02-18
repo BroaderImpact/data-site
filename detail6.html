@@ -26,18 +26,52 @@
 			</header>
 
 		<!-- Main -->
-			<div id="preview">
-				<div class="inner">
-					<div class="image fit">
-						<img src="images/detail6.png" alt="" />
-					</div>
-					<div class="content">
-						<header>
-							<h2>Application of Multivariate Regression in Python-Based Lipidomics Principal Component Analysis </h2>
-						</header>
-						<p>Sciscicator nascitur non fit.</p>
-					</div>
+		<div id="preview">
+			<div class="inner">
+				<div class="image fit">
+					<img src="images/pic06.png" alt="" />
 				</div>
+				<div class="content">
+					<header>
+						<h2>Application of Multivariate Regression in Python-Based Lipidomics Principal Component Analysis </h2>
+					</header>
+					<p>The goal of identifying the differential expression <i>in silico</i> often
+						becomes a proverbial "fishing expedition". To inject precision into the label-free mass spectrometric analysis of lipids, the following pipeline was developed. <br />
+						First, .raw files from the liquid chromatography-mass spectrometry (LCMS) were converted into mzML files. A first pass of these files was performed with SIMLipid, a proprietary software that relies upon the LipidMAPS database. Files were then converted to .csv for data cleaning and batch analysis. The homogeneous distribution of matrix-cluster signals were identified for each of the matrices employed, followed by the identification of homogeneous distribution of endogenous molecular signals in positive and negative ion mode. The inclusion of both external (ESTD) and internal (ISTD) standards allows for confirmation of lipid abundance using normalization algorithms. Subsequently, principal component analysis (PCA) was performed.</p>
+						<pre>
+						<code>
+# Install and load the necessary packages
+install.packages("lipidr")
+library(lipidr)
+library(tidyverse)
+library(ggplot2)
+
+# Load and preprocess the data
+data <- read.csv("lipidomics_data.csv", header = TRUE) # replace "lipidomics_data.csv" with the name of your data file
+data_filtered <- filter_lipids(data, min_intensity = 1000, max_missing = 0.5) # filter out low-intensity lipids and lipids with >50% missing values
+data_normalized <- normalize_lipids(data_filtered, method = "TIC") # normalize the data using Total Ion Current (TIC)
+
+# Exploratory data analysis
+summary(data_normalized) # summarize the normalized data
+hist(data_normalized[,1]) # plot a histogram of the normalized intensities for the first lipid
+boxplot(data_normalized) # plot boxplots of the normalized intensities for all lipids
+
+# Multivariate analysis
+pca <- prcomp(data_normalized, scale. = TRUE) # perform PCA on the normalized data
+biplot(pca, col = "black", cex = 0.8) # plot a biplot of the PCA results
+
+# Data visualization
+ggplot(data_normalized, aes(x = LipidClass, y = Intensity, fill = SampleType)) + geom_boxplot() # plot a boxplot of the normalized intensities by lipid class and sample type
+ggplot(data_normalized, aes(x = LipidClass, y = Intensity, color = SampleType)) + geom_jitter() # plot a jitter plot of the normalized intensities by lipid class and sample type
+ggplot(data_normalized, aes(x = LipidClass, y = Intensity, fill = SampleType)) + geom_violin() # plot a violin plot of the normalized intensities by lipid class and sample type
+@BroaderImpact
+
+						</code>
+						</pre>
+						<p>Briefly, following attribution of signals to LipidMAPS identities, means and deviations thereof were calculated with relative abundance values. Covariant matrices were constructed, with several iterations of eigenvector calculations and values of covariance for each. Finally, data z-scores were projected onto new basis. Resulting graph shown.
+						</p>
+				</div>
+			</div>
 				<a href="detail5.html" class="nav previous"><span class="fa fa-chevron-left"></span></a>
 				<a href="detail7.html" class="nav next"><span class="fa fa-chevron-right"></span></a>
 			</div>
