@@ -42,9 +42,45 @@
 					</div>
 					<div class="content">
 						<header>
-							<h2>RNASeq Pipeline</h2>
+							<h2>RNASeq Pipeline in R</h2>
 						</header>
-						<p>Sciscitator nascitur non fit.</p>
+						<ol>
+							<li>Quality control (QC) of raw sequencing data:</li>
+							<ul>
+								<li>Use FastQC to assess the quality of the raw sequencing reads and identify any potential issues, such as overrepresented sequences, adapter contamination, or poor base quality.</li>
+								<li>Trimmomatic or similar tools to trim adapter sequences and remove low-quality reads.</li>
+								<li>Use FastQC again to confirm the improvement in read quality.</li>
+							</ul>
+							<li>Alignment of sequencing reads to a reference genome:</li>
+							<ul>
+								<li>Use HISAT2 or STAR to align the processed reads to a reference genome.</li>
+								<li>Alternatively, if there is no appropriate reference genome available, use a de novo assembler such as Trinity to generate a transcriptome assembly.</li>
+							</ul>
+							<li>Quantification of gene expression levels:</li>
+							<ul>
+								<li>Use featureCounts or HTSeq to count the number of reads that map to each gene.</li>
+								<li>Normalize the raw gene counts using the library size, effective length, or similar factors.</li>
+								<li>Use edgeR, DESeq2, or other differential expression analysis tools to identify differentially expressed genes between different experimental conditions.</li>
+							</ul>
+						
+							<li>Functional analysis of differentially expressed genes:</li>
+							<ul>
+								<li> Use pathway analysis tools such as GSEA, KEGG, or GO enrichment analysis to identify functional pathways that are significantly enriched in the differentially expressed genes.</li>
+								<li> Use gene set enrichment analysis (GSEA) to determine whether a priori defined gene sets exhibit statistically significant differences between different experimental conditions.</li>
+							</ul>
+							<li> Validation of differentially expressed genes:</li>
+							<ul>
+								<li> Use qPCR or other methods to validate the expression of a subset of differentially expressed genes identified in the RNA-seq analysis.</li>
+							</ul>
+							<li> Visualization of results:</li>
+							<ul>
+								<li> Generate heatmaps, volcano plots, and other graphical representations to visualize the differential expression results and the functional analysis of differentially expressed genes.</li>
+							</ul>
+							<li> Report generation:</li>
+							<ul>
+								<li> Generate a report summarizing the findings of the RNA-seq analysis workflow using RMarkdown or other similar tools.</li>
+							</ul>
+						</ol>
 					</div>
 				</div>
 				<a href="detail8.html" class="nav previous"><span class="fa fa-chevron-left"></span></a>
